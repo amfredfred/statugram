@@ -3,6 +3,7 @@
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/referrals', [HomeController::class, 'referrals'])->name('referrals');
+    Route::get('/withdraw', [HomeController::class, 'withdraw'])->name('withdraw');
+    Route::get('/withdrawfunds', [WithdrawalController::class, 'withdrawfunds'])->name('withdrawfunds');
+
     Route::post('/roll', [GameController::class, 'roll'])->name('roll');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

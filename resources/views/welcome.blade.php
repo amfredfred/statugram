@@ -14,9 +14,10 @@
             </p>
         </div>
         <div class="flex-row-inner">
-            <div class='main-link-wrapper'>
-                <a href="{{url('dashboard')}}" class="large-button-link">PLAY NOW</a>
-            </div>
+            <form class='main-link-wrapper' action="{{route('roll')}}" method="POST">
+                @csrf
+                <button class="large-button-link"> WIN 10 USD </button>
+            </form>
         </div>
     </div>
 </section>
@@ -65,10 +66,10 @@
         </div>
         </ul>
         <div class="flex-row-inner">
-            <div class='main-link-wrapper'>
-                <a href="{{url('dashboard')}}" class="large-button-link">WIN 10 USD</a>
-            </div>
-
+            <form class='main-link-wrapper' action="{{route('roll')}}" method="POST">
+                @csrf
+                <button class="large-button-link"> WIN 10 USD </button>
+            </form>
         </div>
     </div>
 </section>

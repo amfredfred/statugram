@@ -45,7 +45,14 @@ a {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between
+}
+
+.space-between {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 .nav-container {
@@ -103,7 +110,6 @@ ul {
 }
 
 .content {
-    width: 700px;
     margin-inline: auto;
     max-width: 100%;
 }
@@ -276,7 +282,8 @@ ul {
 }
 
 .dash {
-    width: 100%;
+    width: 600px;
+    max-width: 100%;
     margin-top: .6rem;
     flex-grow: 1;
 }
@@ -416,18 +423,203 @@ ul {
     border-radius: 60px/500px;
 }
 
+
+/* ROLL BUTTON START */
 .game-form {
-    width: 100%;
-    border-radius: 10px;
+    border-radius: 50%;
+    width: max-content;
+    margin: auto;
+    padding: .6rem;
     margin-block: 2rem;
     display: flex;
     align-items: center;
-    background: linear-gradient(160deg, whitesmoke, white);
+    background: linear-gradient(160deg, orangered, red);
+    justify-content: center;
+    position: relative;
+    isolation: isolate;
+    contain: style;
+}
+
+.game-form::after {
+    position: absolute;
+    left: .3rem;
+    top: .3rem;
+    content: '';
+    height: 110px;
+    aspect-ratio: 1/1;
+    border: 1rem white solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: inherit;
+    z-index: -1;
+    animation: rotate-anti-clock-wise infinite linear 7000ms;
+}
+
+@keyframes rotate-anti-clock-wise {
+    to {
+        transform: rotate(-360deg)
+    }
+}
+
+.game-form::before {
+    position: absolute;
+    left: .3rem;
+    top: .3rem;
+    content: '';
+    height: 110px;
+    aspect-ratio: 1/1;
+    border: 1rem green solid;
+    border-bottom-color: white;
+    border-top-color: orange;
+    border-radius: inherit;
+    z-index: -1;
+    animation: rotate-clock-wise infinite linear 7000ms;
+}
+
+
+@keyframes rotate-clock-wise {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.roll-button {
+    text-align: center;
+    padding-block: .7rem;
+    border-radius: inherit;
+    font-weight: 800;
+    height: 100px;
+    aspect-ratio: 1/1;
+    color: aliceblue;
+    box-shadow: 0 0 10px black;
+    transition: box-shadow 300ms, scale 400ms;
+    background: linear-gradient(160deg, orangered, red);
+}
+
+.roll-button:hover {
+    box-shadow: 0 0 20px black;
+    scale: 1.05;
+}
+
+.roll-button:active {
+    box-shadow: 0 0 20px black;
+    opacity: 1;
+    scale: .9;
+}
+
+.ads-side-by-side {
+    max-width: 100%;
+    flex-grow: 1;
+    border-radius: 10px;
+    overflow: hidden !important;
+}
+
+.wallet-dash {
+    background: white;
+    border-radius: 10px;
+    padding: .6rem;
+}
+
+.select {
+    width: 100%;
+    border-radius: inherit;
+}
+
+.form-group {
+    border-radius: inherit;
+    margin-block: 1rem;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.small-select {
+    width: 90px;
+    outline: none !important;
+    border: none;
+    outline-color: red
+}
+
+.form-input {
+    border: 0;
+    flex-grow: 1;
+}
+
+.submit-button {
+    height: 45px;
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+*:focus {
+    outline: none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.alert {
+    margin-bottom: 2rem;
+}
+
+.alert ul {
+    list-style: decimal;
+    padding-inline: 1.6rem;
+}
+
+.alert li {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.alert.alert-danger {
+    color: rgb(159, 22, 22);
+}
+
+span.dropdown-menu {
+    display: none;
+}
+
+.logo-container .space-between {
     justify-content: center;
 }
 
-.roll-button{
-    text-align: center;
-    padding: .7rem 1.6rem;
-    border-radius: inherit;
+
+@media (max-width:600px) {
+    .nav-container {
+        position: fixed;
+        width: 100%;
+        height: max-content;
+        background: white;
+        z-index: 20;
+    }
+
+    .nav-inner {
+        height: 0;
+        transition: height 500ms;
+        background: white;
+        padding: 0;
+    }
+
+    .logo-container {
+        justify-content: left;
+        padding-inline: 1rem;
+    }
+
+    span.dropdown-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .logo-container .space-between {
+        justify-content: space-between;
+    }
+
+    .dropdown-menu-show {
+        height: auto;
+    }
+
+    .dash{
+        padding: 1rem;
+    }
 }

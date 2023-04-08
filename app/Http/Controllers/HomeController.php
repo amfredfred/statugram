@@ -10,4 +10,8 @@ class HomeController extends Controller
     public function referrals() {
         return view( 'referrals' );
     }
+
+    public function withdraw() {
+        return view( 'withdraw' );
+    }
 }

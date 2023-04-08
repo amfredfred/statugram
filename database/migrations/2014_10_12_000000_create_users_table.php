@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('referee')->nullable();
             $table->string('ref_link');
             $table->string('ref_id');
-            $table->dateTime('last_play_time')->nullable();
+            $table->string('last_play_time')->nullable();
+            $table->string('next_play_time')->nullable();
+            $table->decimal('overview', 8,3)->unsigned()->nullable()->default(0);
             $table->json('downlines')->default('[]');
-            $table->integer('earned_from_downline')->unsigned()->nullable()->default(0);
+            $table->decimal('earned_from_downline', 8,3)->unsigned()->nullable()->default(0);
             $table->timestamps();
         });
     }

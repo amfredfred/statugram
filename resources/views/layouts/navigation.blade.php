@@ -1,9 +1,22 @@
 <div class="nav-container">
     <nav class="nav">
         <div class="logo-container">
-            <a href={{ url('/', []) }} class="logo-link">
-                {{config('app.name')}}
-            </a>
+            <div class="space-between">
+                <a href={{ url('/', []) }} class="logo-link">
+                    {{config('app.name')}}
+                </a>
+                <span class="nav-icon material-symbols-outlined dropdown-menu">dashboard</span>
+                <script>
+                    document.querySelector('.dropdown-menu').onclick = () => {
+                        document.querySelector('.nav-inner').classList.toggle('dropdown-menu-show')
+                    }
+                    window.addEventListener('mouseup', (e) => {
+                        if (e.target !== document.querySelector('.nav-inner') && document.querySelector('.nav-inner').contains(e.target) !== true) {
+                            document.querySelector('.nav-inner').classList.remove('dropdown-menu-show')
+                        }
+                    })
+                </script>
+            </div>
         </div>
 
         <div class="nav-inner">
@@ -24,11 +37,31 @@
                 </li>
 
                 <li class="nav-li">
-                    <a href="{{ url('/wallet') }}" class="nav-link">
+                    <a href="{{ url('/withdraw') }}" class="nav-link">
                         <span class="nav-icon material-symbols-outlined">account_balance_wallet</span>
-                        <span class="nav-name">Wallet</span>
+                        <span class="nav-name">withdraw</span>
                     </a>
                 </li>
+
+                <li class="nav-li">
+                    <a href="" class="nav-link">
+                        @csrf
+                        <span class="nav-icon material-symbols-outlined">more_horiz</span>
+                        <button type="submit" class="nav-name">Coming Soon</button>
+                    </a>
+                </li>
+
+
+                <li class="nav-li">
+                    <form class="nav-link alert alert-danger" action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <span class="nav-icon material-symbols-outlined">logout</span>
+                        <button type="submit" class="nav-name">Logout</button>
+                    </form>
+                </li>
+
+
+
 
                 @else
                 @if (Route::has('login'))
