@@ -25,7 +25,9 @@ class User extends Authenticatable {
         'ref_link',
         'ref_id',
         'earned_from_downline',
-        'last_play_time'
+        'last_play_time',
+        'next_play_time',
+        'overview'
     ];
 
     /**

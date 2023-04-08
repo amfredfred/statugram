@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
         ] );
 
         if ( $request->referee ) {
-            $upline = User::where( 'ref_id', $request->referee );
+            $upline = User::where( 'ref_id', $request->referee )->first();
             if ( $upline ) {
                 $upline->downlines = [ ...$upline->downlines, $user->ref_id ];
                 $upline->save();
